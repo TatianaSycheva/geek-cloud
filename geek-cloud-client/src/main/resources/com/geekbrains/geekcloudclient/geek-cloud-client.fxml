@@ -10,6 +10,6 @@ fx:controller="com.geekbrains.geekcloudclient.CloudMainController">
       <ListView fx:id="clientView" layoutX="26.0" layoutY="22.0" prefHeight="362.0" prefWidth="235.0" />
       <ListView fx:id="serverView" layoutX="343.0" layoutY="22.0" prefHeight="362.0" prefWidth="235.0" />
       <Button onAction="#sendToServer" layoutX="288.0" layoutY="153.0" mnemonicParsing="false" text="&gt;"/>
-      <Button layoutX="288.0" layoutY="217.0" mnemonicParsing="false" text="&lt;" />
+      <Button onAction="#downLoadFile" layoutX="288.0" layoutY="217.0" mnemonicParsing="false" text="&lt;" />
 
 </AnchorPane>

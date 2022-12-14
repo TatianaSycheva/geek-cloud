@@ -7,18 +7,14 @@ import java.util.concurrent.ThreadFactory;
 
 public class CloudServer {
     public static void main(String[] args) {
-        ThreadFactory servisThreadFactory =  r -> {
-                Thread thread = new Thread(r);
-                thread.setName("file-handler-thread");
-                thread.setDaemon(true);
-                return thread;
+        DaemonThreadFactory servisThreadFactory = new DaemonThreadFactory();
 
-        };
+
         try(ServerSocket serverSocket = new ServerSocket(8189)){
             while (true) {
                 Socket socket = serverSocket.accept();
-                servisThreadFactory.newThread(new FileHandler(socket))
-                        .start();
+                servisThreadFactory.getThread(
+                        new FileHandler(socket), "file-handler-thread").start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
